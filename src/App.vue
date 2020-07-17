@@ -1,11 +1,24 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
+  <div id="app" class="container">
+    <!--<img alt="Vue logo" src="./assets/logo.png">-->
     <HolaMundo msg="Bienvenidos a la aplicación Vue"/>
-    <FormMenu />
-    <ExtraInfo titulo="Installed CLI Plugins" v-bind:enlaces="enlaces_cli_plugins" />
-    <ExtraInfo titulo="Essential Links" v-bind:enlaces="enlaces_essential_links" />
-    <ExtraInfo titulo="Ecosystem" v-bind:enlaces="enlaces_ecosystem" />
+    <div class="row">
+      <div class="col s6">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">Ingrese Nuevo Plato al Menú</span>
+            <FormMenu />
+          </div>
+        </div>
+      </div>
+      <div class="col s6">
+        <NumeroMayor />
+        <Counter />
+        <ExtraInfo titulo="Installed CLI Plugins" v-bind:enlaces="enlaces_cli_plugins" />
+        <ExtraInfo titulo="Essential Links" v-bind:enlaces="enlaces_essential_links" />
+        <ExtraInfo titulo="Ecosystem" v-bind:enlaces="enlaces_ecosystem" />
+      </div>
+    </div>
     <br> <br> <br>
   </div>
 </template>
@@ -14,13 +27,17 @@
 import HolaMundo from './components/HolaMundo.vue'
 import ExtraInfo from './components/ExtraInfo.vue'
 import FormMenu from './components/FormMenu.vue'
+import Counter from './components/Counter.vue'
+import NumeroMayor from './components/NumeroMayor.vue'
 
 export default {
   name: 'App',
   components: {
     HolaMundo,
     ExtraInfo,
-    FormMenu
+    FormMenu,
+    Counter,
+    NumeroMayor
   },
   data: () => {
     return {

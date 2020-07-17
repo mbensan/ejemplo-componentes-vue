@@ -1,29 +1,69 @@
 <template>
-  <form action="">
-    <h3>Ingresar un Plato Nuevo al Menú</h3>
-    <p>Nombre del plato: <input type="text" v-model="nombre" ></p>
-    <p>Precio: $<input type="number" v-model="precio" ></p>
-    <p>Categoría:
-        <select v-model="categoria" >
-          <option value="entrada">Entrada</option>
-          <option value="principal">Plato Principal</option>
-          <option value="acomp">Acompañamiento</option>
-          <option value="postre">Postre</option>
-        </select>
-    </p>
-    <p>Descripción: <textarea v-model="descripcion" ></textarea></p>
+  <form v-on:submit="enviar" action="">
+    <div class="input-field">
+      <input type="text" v-model="nombre" required>
+      <label for="">Nombre del plato:</label>
+    </div>
+    <div class="input-field">
+      <input type="number" v-model="precio" required min="1000" max="20000">
+      <label for="">Precio: $</label>
+    </div>
+    <div class="input-field">
+      <select v-model="categoria" required>
+        <option value=""></option>
+        <option value="entrada">Entrada</option>
+        <option value="principal">Plato Principal</option>
+        <option value="acomp">Acompañamiento</option>
+        <option value="postre">Postre</option>
+      </select>
+      <label for="">Categoria:</label>
+    </div>
+    <div class="input-field">
+      <textarea v-model="descripcion" class="materialize-textarea"></textarea>
+      <label for="">Descripción:</label>
+    </div>
+    <div class="input-field">
+      <div class="row-">
+        <div class="col s6">
+          <label>
+            <input type="checkbox" value="dsco" v-model="opciones" />
+            <span>con Descuento</span>
+          </label>
+        </div>
+        <div class="col s6">
+          <label>
+            <!-- <input type="checkbox" value="rappi" v-model="opciones" />   -->
+            <span>Rappi</span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <p><input type="submit"></p>
   </form>
 </template>
 
 <script>
+import M from 'materialize-css'
+
 export default {
   name: 'FormMenu',
-  data: function() {
+  data() {
     return {
       nombre: '',
       precio: 0,
       categoria: '',
-      descripcion: ''
+      descripcion: '',
+      opciones: []
+    }
+  },
+  mounted: function() {
+    var elems = document.querySelectorAll('select');
+    M.FormSelect.init(elems, {});
+  },
+  methods: {
+    enviar: function(ev) {
+      ev.preventDefault();
+      console.log(this.nombre)
     }
   }
 }
