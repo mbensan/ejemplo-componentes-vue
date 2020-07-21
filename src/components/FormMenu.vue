@@ -38,7 +38,7 @@
         </div>
       </div>
     </div>
-    <p><input type="submit"></p>
+    <p><input type="submit" class="btn tooltipped" data-position="bottom" data-tooltip="Haga click para enviar el formulario"></p>
   </form>
 </template>
 
@@ -57,8 +57,11 @@ export default {
     }
   },
   mounted: function() {
-    var elems = document.querySelectorAll('select');
-    M.FormSelect.init(elems, {});
+    var selects = document.querySelectorAll('select');
+    M.FormSelect.init(selects, {});
+
+    var tooltips = document.querySelectorAll('.tooltipped');
+    M.Tooltip.init(tooltips, {});
   },
   methods: {
     enviar: function(ev) {

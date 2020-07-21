@@ -23,9 +23,11 @@ export default {
 
       let puntajeOtroJugador;
       if (this.numJugador == '1') {
+        // caso en que soy el jugador 1
         Store.updatePuntaje1(nuevoPuntaje);
         puntajeOtroJugador = Store.state.puntaje2;
       } else {
+        // caso en que soy el jugador 2
         Store.updatePuntaje2(nuevoPuntaje);
         puntajeOtroJugador = Store.state.puntaje1;
       }
@@ -42,3 +44,5 @@ export default {
   }
 }
 </script>
+
+<style></style>
